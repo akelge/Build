@@ -173,18 +173,18 @@ if [ -n "$BUILD" ]; then
   echo 'Cloning Volumio Node Backend'
   if [ -n "$PATCH" ]; then
       echo "Cloning Volumio with all its history"
-      git clone https://github.com/volumio/Volumio2.git build/$BUILD/root/volumio
+      git clone https://github.com/akelge/Volumio2.git build/$BUILD/root/volumio
   else
-      git clone --depth 1 -b master --single-branch https://github.com/volumio/Volumio2.git build/$BUILD/root/volumio
+      git clone --depth 1 -b master --single-branch https://github.com/akelge/Volumio2.git build/$BUILD/root/volumio
   fi
   echo "Pre-commit hooks"
   echo '#!/bin/sh
   # Pre-commit hook, uncomment when finished linting all codebase
   #npm run lint-staged' > "build/$BUILD/root/volumio/.git/hooks/pre-commit"
   echo 'Cloning Volumio Classic UI'
-  git clone --depth 1 -b dist --single-branch https://github.com/volumio/Volumio2-UI.git "build/$BUILD/root/volumio/http/www"
+  git clone --depth 1 -b dist --single-branch https://github.com/akelge/Volumio2-UI.git "build/$BUILD/root/volumio/http/www"
   echo 'Cloning Volumio Contemporary UI'
-  git clone --depth 1 -b dist3 --single-branch https://github.com/volumio/Volumio2-UI.git "build/$BUILD/root/volumio/http/www3"
+  git clone --depth 1 -b dist3 --single-branch https://github.com/akelge/Volumio2-UI.git "build/$BUILD/root/volumio/http/www3"
   echo "Adding os-release infos"
   {
     echo "VOLUMIO_BUILD_VERSION=\"$(git rev-parse HEAD)\""
