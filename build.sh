@@ -159,6 +159,8 @@ if [ -n "$BUILD" ]; then
 
   mkdir "build/$BUILD"
   mkdir "build/$BUILD/root"
+  mkdir -p "build/$BUILD/root/etc/apt"
+  cp -a /etc/apt/trusted.gpg* "build/$BUILD/root/etc/apt"
   multistrap -a "$ARCH" -f "$CONF"
   if [ ! "$BUILD" = x86 ]; then
     echo "Build for arm/armv7/armv8 platform, copying qemu"
